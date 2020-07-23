@@ -19,10 +19,39 @@ SBSBootstrapIconsComponent class >> initialize [
 	app addLibrary: SBSDeploymentLibrary
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 SBSBootstrapIconsComponent >> iconSelectors [
 
 	^(SBSIconTag methods select: [ :each | each protocol = 'icons' ] thenCollect: [ :each | each selector ]) asSortedCollection 
+]
+
+{ #category : #'rendering-sections' }
+SBSBootstrapIconsComponent >> renderConfigurationOn: html [
+	html heading
+		id: 'configuration';
+		level2;
+		with: 'Configuration'.
+	html
+		paragraph:
+			'If you are seeing the icons in this examples browser, you probably already have the icons properly installed, there are a few extra settings that you can use in different installation scenarios, specific to Seaside use of the icons.'.
+	html heading
+		level3;
+		with: 'File Library'.
+	html
+		paragraph: [ html
+				html:
+					'If you want to use the out of the box functionality, you can add the <code>SBSIconsFileLibrary</code> to your Seaside application, as with any other file library.' ].
+	html heading
+		level3;
+		with: 'Base URL'.
+	html
+		paragraph: [ html
+				html:
+					'If you use the <code>SBSIconsFileLibrary</code> to serve the icons or sprites SVG files, then you do not need to do anything special, since the URL of the library is going to be used to resolve the path to SVG files.' ].
+	html
+		paragraph: [ html
+				html:
+					'But if you want to serve the files from a static or different location, you can specify a base URL on top of which the icons file names or sprites bundle file are going to be appended. You can change this setting by using <code>SBSIconTag class>>baseUrl:</code> accessor.' ]
 ]
 
 { #category : #rendering }
@@ -33,13 +62,13 @@ SBSBootstrapIconsComponent >> renderContentOn: html [
 		class: 'container';
 		id: 'content';
 		with: [ self renderIconsOn: html.
-			self renderInstallationOn: html.
+			self renderConfigurationOn: html.
 			self renderUsageOn: html.
 			
 	 ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-sections' }
 SBSBootstrapIconsComponent >> renderEmbeddedUsageOn: html [
 	html row
 		class: 'my-4';
@@ -67,7 +96,7 @@ SBSBootstrapIconsComponent >> renderEmbeddedUsageOn: html [
 						with: [ html preformatted: 'html icon beEmbedded chevronRight' ] ] ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-sections' }
 SBSBootstrapIconsComponent >> renderExternalImageUsageOn: html [
 	html row
 		class: 'my-4';
@@ -141,6 +170,12 @@ SBSBootstrapIconsComponent >> renderHeroContentOn: html [
 				class: 'px-1';
 				with: '•'.
 			html anchor
+				url: '#configuration';
+				with: 'Configuration'.
+			html span
+				class: 'px-1';
+				with: '•'.
+			html anchor
 				url: '#usage';
 				with: 'Usage'.
 			html span
@@ -165,7 +200,7 @@ SBSBootstrapIconsComponent >> renderHeroOn: html [
 				[ self renderHeroContentOn: html ] ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-icons' }
 SBSBootstrapIconsComponent >> renderIcon: selector on: html [
 	| tokens |
 	tokens := self tokenizeSelector: selector.
@@ -185,7 +220,7 @@ SBSBootstrapIconsComponent >> renderIcon: selector on: html [
 							] ] ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-icons' }
 SBSBootstrapIconsComponent >> renderIconsOn: html [
 html div
 				class: 'my-5';
@@ -198,14 +233,6 @@ html div
 								class:
 									'row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list';
 								with: [ self iconSelectors do: [ :each | self renderIcon: each on: html ] ] ] ]
-]
-
-{ #category : #rendering }
-SBSBootstrapIconsComponent >> renderInstallationOn: html [
-	html heading
-						id: 'installation';
-						level2;
-						with: 'Installation'
 ]
 
 { #category : #rendering }
@@ -230,7 +257,7 @@ SBSBootstrapIconsComponent >> renderNavigationBarOn: html [
 									html emphasis: 'for Seaside' ] ] ] ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-sections' }
 SBSBootstrapIconsComponent >> renderSpriteUsageOn: html [
 	html row
 		class: 'my-4';
@@ -263,7 +290,7 @@ SBSBootstrapIconsComponent >> renderSpriteUsageOn: html [
 								preformatted: 'html icon heartFill. html icon toggles. html icon shop.' ] ] ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-sections' }
 SBSBootstrapIconsComponent >> renderSylingUsageOn: html [
 	html row
 		class: 'my-4';
@@ -295,7 +322,7 @@ SBSBootstrapIconsComponent >> renderSylingUsageOn: html [
 									'html icon dangerText reception1. html icon warningText reception2. html icon successText reception4' ] ] ]
 ]
 
-{ #category : #rendering }
+{ #category : #'rendering-sections' }
 SBSBootstrapIconsComponent >> renderUsageOn: html [
 	html heading
 		level2;
@@ -317,7 +344,7 @@ SBSBootstrapIconsComponent >> style [
 '
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 SBSBootstrapIconsComponent >> tokenizeSelector: selector [
 	| tokens |
 	tokens := selector asCapitalizedPhrase asLowercase substrings.
@@ -325,7 +352,7 @@ SBSBootstrapIconsComponent >> tokenizeSelector: selector [
 	^tokens
 ]
 
-{ #category : #accessing }
+{ #category : #updating }
 SBSBootstrapIconsComponent >> updateRoot: anHtmlRoot [
 	
 	super updateRoot: anHtmlRoot .
