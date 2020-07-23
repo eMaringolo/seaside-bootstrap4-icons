@@ -139,7 +139,7 @@ SBSBootstrapIconsComponent >> renderHeroContentOn: html [
 			html break.
 			html
 				text:
-					'And as expected, there is a Seaside integration to use it from the confort of your objects.' ].
+					'And as expected, there is a Seaside integration to use it from the comfort of your Smalltalk objects.' ].
 	html row textMuted
 		with: [ html column small
 				with: [ html
