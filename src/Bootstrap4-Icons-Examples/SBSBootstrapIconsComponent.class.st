@@ -76,23 +76,23 @@ SBSBootstrapIconsComponent >> renderExternalImageUsageOn: html [
 				with: [ html heading
 						level3;
 						id: 'external-image';
-						with: [ html text: 'External image'	].
+						with: [ html text: 'External image' ].
 					html
-						paragraph: [ 
-							html html: 'Link directly to the files in the <code>SBSIconsFileLibrary</code> or <code>SBSIcon>>baseUrl</code> from an <code>image</code> tag.'.
-							html break.
-							html
+						paragraph: [ html
 								html:
-									'SVG sprites allow you to reference an external file similar to an <code>&lt;img&gt;</code> element, but with the power of <code>currentColor</code> for easy theming.' ] ].
+									'Link directly to the files in the <code>SBSIconsFileLibrary</code> or <code>SBSIcon>>baseUrl</code> from an <code>image</code> tag.' ] ].
 			html column
 				mediumSize: 8;
-				with:  [ html div
+				with: [ html div
 						class: 'bd-example';
-						with: [ html image bsIcon badgeHdFill; width: 32; height: 32 ].
+						with: [ html image bsIcon
+								badgeHdFill;
+								width: 32;
+								height: 32 ].
 					html div
 						class: 'highlight';
 						with: [ html
-								preformatted: 'html image bsIcon badgeHdFill; width: 32; height: 32' ] ]  ]
+								preformatted: 'html image bsIcon badgeHdFill; width: 32; height: 32' ] ] ]
 ]
 
 { #category : #rendering }
