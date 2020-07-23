@@ -1,5 +1,5 @@
 # Introduction
-Seaside classes, extensions and file library for [Bootstrap SVG Icons](https://icons.getbootstrap.com/)
+[Seaside](https://github.com/SeasideSt/Seaside) classes, extensions and file library for [Bootstrap SVG Icons](https://icons.getbootstrap.com/)
 
 # Installation
 
