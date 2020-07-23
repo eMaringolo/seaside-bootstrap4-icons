@@ -322,3 +322,9 @@ SBSBootstrapIconsComponent >> tokenizeSelector: selector [
 	tokens at: 1 put: tokens first capitalized.
 	^tokens
 ]
+
+{ #category : #accessing }
+SBSBootstrapIconsComponent >> updateRoot: anHtmlRoot [
+	anHtmlRoot beHtml5.
+	anHtmlRoot title: 'Bootstrap Icons for Seaside'
+]
