@@ -35,9 +35,7 @@ SBSIconTag class >> compileIconMethodsFor: iconClasses [
 			| selector |
 			selector := self selectorForIconNamed: each.
 			self compileIconTagMethodNamed: selector identifier: each.
-			self compileImageIconMethodNamed: selector identifier: each.
-			
-			 ]
+			self compileImageIconMethodNamed: selector identifier: each ]
 ]
 
 { #category : #compiling }
@@ -80,7 +78,11 @@ SBSIconTag class >> compileImageIconMethodNamed: selector identifier: each [
 				tab;
 				nextPutAll: 'self setImageTagUrl:''';
 				nextPutAll: each;
-				nextPutAll: '''.'].
+				nextPutAll: '''.';
+				cr;
+				tab;
+				nextPutAll: '^imageTag'
+				 ].
 	^ GRPlatform current
 		compile: methodSource
 		into: SBSImageIcon

@@ -54,7 +54,7 @@ SBSBootstrapIconsComponent >> renderEmbeddedUsageOn: html [
 					html
 						paragraph: [ html
 								html:
-									'Embed your icons within the HTML of your page (as opposed to an external image file). Here we’ve used a custom <code>width</code> and <code>height</code>.' ] ].
+									'Embed the SVG of the icons within the HTML of your page (as opposed to an external image file).' ] ].
 			html column
 				mediumSize: 8;
 				with: [ html div
@@ -64,8 +64,7 @@ SBSBootstrapIconsComponent >> renderEmbeddedUsageOn: html [
 									'<svg class="bi bi-chevron-right" width="32" height="32" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>' ].
 					html div
 						class: 'highlight';
-						with:
-								[ html preformatted: 'html icon beEmbedded chevronRight' ] ] ]
+						with: [ html preformatted: 'html icon beEmbedded chevronRight' ] ] ]
 ]
 
 { #category : #rendering }
@@ -142,12 +141,6 @@ SBSBootstrapIconsComponent >> renderHeroContentOn: html [
 				class: 'px-1';
 				with: '•'.
 			html anchor
-				url: '#install';
-				with: 'Install'.
-			html span
-				class: 'px-1';
-				with: '•'.
-			html anchor
 				url: '#usage';
 				with: 'Usage'.
 			html span
@@ -160,7 +153,7 @@ SBSBootstrapIconsComponent >> renderHeroContentOn: html [
 				class: 'px-1';
 				with: '•'.
 			html anchor
-				url: 'https://github.com/emaringolo/bootstrap4-icons';
+				url: 'https://github.com/emaringolo/Seaside-Bootstrap4-Icons';
 				with: 'GitHub repo' ]
 ]
 
@@ -225,8 +218,10 @@ SBSBootstrapIconsComponent >> renderNavigationBarOn: html [
 	bar
 		with: [ html container
 				class: 'container flex-wrap flex-md-nowrap py-0 px-3';
-				with: [ html navigationBarBrand
-						with: [ html image lightText bsIcon bootstrap.
+				with: [ html navigationBarBrand lightText
+						with: [ html icon bootstrap
+								style: 'padding-right: 5px';
+								size: 30.
 							html span
 								class: 'brand';
 								lightText;
@@ -250,7 +245,7 @@ SBSBootstrapIconsComponent >> renderSpriteUsageOn: html [
 					html
 						paragraph: [ html
 								html:
-									'To use the SVG sprite, you simply call the icon brush method and it will include an <code>&lt;svg&gt;</code> tag together with a <code>&lt;use xlink:ref="..."&gt;</code> pointing to a bundle file with all icons and a fragment identifier the icon name.'.
+									'To use the SVG sprite, you simply call the icon brush method and it will include an <code>&lt;svg&gt;</code> tag together with a <code>&lt;use xlink:ref="..."&gt;</code> pointing to a bundle file with all icons and a fragment identifying the icon name.'.
 							html break.
 							html
 								html:
@@ -277,19 +272,27 @@ SBSBootstrapIconsComponent >> renderSylingUsageOn: html [
 				with: [ html heading
 						level3;
 						id: 'styling';
-						with: [ html text: 'Styling'	].
+						with: [ html text: 'Styling' ].
 					html
-						paragraph: [ 
-							html html: 'Color can be changed by setting a <code>text-*</code> class (via <code>*text</code> kind of messages) or custom CSS: '.			] ].
+						paragraph: [ html
+								html:
+									'Color can be changed by setting a <code>text-*</code> class (via <code>*text</code> kind of messages) or custom CSS: ' ] ].
 			html column
 				mediumSize: 8;
 				with: [ html div
 						class: 'bd-example';
-						with: [ html icon successText batteryFull. html space. html icon warningText batteryHalf].
+						with: [ 
+							html icon dangerText reception1.
+							html space.
+							html icon warningText reception2.
+							html space.
+							html icon successText reception4
+							].
 					html div
 						class: 'highlight';
 						with: [ html
-								preformatted: 'html icon successText batteryFull. html icon warningText batteryHalf' ] ] ]
+								preformatted:
+									'html icon dangerText reception1. html icon warningText reception2. html icon successText reception4' ] ] ]
 ]
 
 { #category : #rendering }
