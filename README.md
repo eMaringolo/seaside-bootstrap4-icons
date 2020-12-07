@@ -5,7 +5,7 @@
 
 ```smalltalk
 Metacello new 
-  baseline: 'BaselineOfBootstrap4Icons'; 
+  baseline: 'Bootstrap4Icons'; 
   repository: 'github://eMaringolo/seaside-bootstrap4-icons/src'; 
   load.
   ```
