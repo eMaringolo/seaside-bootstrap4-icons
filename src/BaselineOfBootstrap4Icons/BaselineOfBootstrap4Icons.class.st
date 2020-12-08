@@ -32,6 +32,6 @@ BaselineOfBootstrap4Icons >> bootstrap4: spec [
 	spec
 		baseline: 'Bootstrap4'
 		with: [ spec
-				loads: #('default');
-				repository: 'github:astares/Seaside-Bootstrap4/src' ]
+				loads: #('default'); 
+				repository: 'github://astares/Seaside-Bootstrap4/src' ]
 ]
